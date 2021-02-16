@@ -1,16 +1,15 @@
 import React from 'react'
 import Highlight, { defaultProps } from 'prism-react-renderer'
-import lightTheme from 'prism-react-renderer/themes/github';
-import darkTheme from 'prism-react-renderer/themes/nightOwl';
+import lightTheme from 'prism-react-renderer/themes/github'
+import darkTheme from 'prism-react-renderer/themes/nightOwl'
 
-export default ({ children, className }) => {
+export default ({ children, className = '' }) => {
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-  console.log(prefersDark)
-  // Pull the className
-  const language = className.replace(/language-/, '') || ""
- 
+  const language = className.replace(/language-/, '') || ''
+
   return (
-    <Highlight {...defaultProps}
+    <Highlight
+      {...defaultProps}
       code={children.trim()}
       language={language}
       theme={prefersDark ? darkTheme : lightTheme}
@@ -22,7 +21,7 @@ export default ({ children, className }) => {
             return (
               <div key={index} {...lineProps}>
                 {line.map((token, key) => (
-                  <span key={key}{...getTokenProps({ token, key })} />
+                  <span key={key} {...getTokenProps({ token, key })} />
                 ))}
               </div>
             )

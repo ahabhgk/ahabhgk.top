@@ -2,63 +2,64 @@ const path = require(`path`)
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
+  const { createNodeField } = actions
 
   if (node.internal.type === 'Mdx') {
-    const { sourceInstanceName } = getNode(node.parent);
+    const { sourceInstanceName } = getNode(node.parent)
     if (sourceInstanceName === 'posts') {
       const slug = createFilePath({
         node,
-        getNode
-      });
+        getNode,
+      })
 
       createNodeField({
         node,
         name: 'slug',
-        value: `/blog${slug}`
-      });
+        value: `/blog${slug}`,
+      })
 
       createNodeField({
         node,
         name: 'type',
-        value: 'post'
-      });
+        value: 'post',
+      })
     } else if (sourceInstanceName === 'pages') {
       const slug = createFilePath({
         node,
         getNode,
-        basePath: 'pages'
-      });
+        basePath: 'pages',
+      })
 
       createNodeField({
         node,
         name: 'slug',
-        value: slug
-      });
+        value: slug,
+      })
 
       createNodeField({
         node,
         name: 'type',
-        value: 'page'
-      });
+        value: 'page',
+      })
     }
   }
-};
+}
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`{
-    allMdx(filter: { frontmatter: { publish: { eq: true } } }) {
-      edges {
-        node {
-          fields {
-            slug
-            type
+  const result = await graphql(`
+    {
+      allMdx(filter: { frontmatter: { publish: { eq: true } } }) {
+        edges {
+          node {
+            fields {
+              slug
+              type
+            }
           }
         }
       }
     }
-  }
   `)
 
   result.data.allMdx.edges.forEach(({ node }) => {
@@ -67,7 +68,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/post.js`),
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
-        slug: node.fields.slug
+        slug: node.fields.slug,
       },
     })
   })

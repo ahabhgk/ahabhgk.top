@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Pandas Eating Lots`,
+    title: `ahabhgk's blog`,
+    author: 'ahabhgk <ahabhgk@gmail.com>',
+    siteDescription: `ahabhgk's blog`,
+    siteUrl: 'https://ahabhgk.github.io',
   },
   plugins: [
     {
@@ -22,7 +25,7 @@ module.exports = {
       options: {
         extensions: [`.mdx`, `.md`],
         defaultLayouts: {
-          default: require.resolve("./src/components/layout.js"),
+          default: require.resolve('./src/components/layout.js'),
         },
       },
     },

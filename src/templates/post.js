@@ -1,8 +1,8 @@
-import React from "react"
-import { graphql } from "gatsby"
-import { Helmet } from 'react-helmet';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import Layout from "../components/layout"
+import React from 'react'
+import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
+import Layout from '../components/layout'
 
 export default function BlogPost({ data }) {
   const { frontmatter, body } = data.mdx
@@ -32,4 +32,4 @@ export const query = graphql`
       body
     }
   }
-`;
+`
