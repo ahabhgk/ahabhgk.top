@@ -49,7 +49,12 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     {
-      allMdx(filter: { frontmatter: { publish: { eq: true } } }) {
+      allMdx(
+        filter: {
+          frontmatter: { publish: { eq: true } }
+          fields: { type: { eq: "post" } }
+        }
+      ) {
         edges {
           node {
             fields {

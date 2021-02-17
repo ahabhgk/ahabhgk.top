@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { format, parseISO } from 'date-fns'
 import Layout from '../components/layout'
 
 export default function BlogPost({ data }) {
@@ -16,7 +17,9 @@ export default function BlogPost({ data }) {
       )}
       <h1>{frontmatter.title}</h1>
       {body && <MDXRenderer>{body}</MDXRenderer>}
-      <div className="text-right mt-8 text-gray-500">{frontmatter.date}</div>
+      <div className="text-right mt-8 text-gray-500">
+        {format(parseISO(frontmatter.date), 'yyyy-MM-dd')}
+      </div>
     </Layout>
   )
 }
