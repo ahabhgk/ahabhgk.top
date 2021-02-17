@@ -45,6 +45,7 @@ module.exports = {
   variants: {
     extend: {
       typography: ['dark'],
+      fontWeight: ['active'],
     },
   },
   plugins: [typography],

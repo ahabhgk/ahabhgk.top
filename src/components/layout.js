@@ -31,7 +31,8 @@ export default function Layout({ children }) {
             <Link
               to={page}
               key={page}
-              className="mr-10 text-xl text-gray-900 hover:text-indigo-600 font-bold dark:text-gray-200"
+              activeClassName="font-bold"
+              className="mr-10 text-xl text-gray-900 hover:text-indigo-600 active:font-bold dark:text-gray-200"
             >
               {page}
             </Link>
