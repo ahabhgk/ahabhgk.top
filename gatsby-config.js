@@ -90,6 +90,15 @@ module.exports = {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js'),
         },
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+              quality: 80,
+            },
+          },
+        ],
       },
     },
     {
@@ -98,6 +107,7 @@ module.exports = {
         color: '#0000ff',
       },
     },
+    `gatsby-plugin-sharp`,
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-helmet`,
   ],
